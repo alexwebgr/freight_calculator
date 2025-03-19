@@ -17,28 +17,41 @@ class CalculatorService
 
   def call
     @origin_port, @destination_port, criteria = InputParserService.call(input_string).values
-    @aggregated_sailings = MapReduceService.new.aggregated_sailings
     criteria_methods = {
       "cheapest-direct" => "cheapest_direct"
     }
 
     return [] if criteria_methods[criteria].nil?
 
-    public_send criteria_methods[criteria]
+    @aggregated_sailings = MapReduceService.new.aggregated_sailings
+
+    sailing_codes = send criteria_methods[criteria]
+    find_sailings(sailing_codes)
+  end
+
+  private
+
+  def find_sailings(codes)
+    aggregated_sailings.select do |sailing|
+      codes.include?(sailing[:sailing_code])
+    end
   end
 
   def cheapest_direct
-    aggregated_sailings
+    sailing_code = aggregated_sailings
       .map do |sailing|
         if sailing[:origin_port] == origin_port && sailing[:destination_port] == destination_port
-          sailing.merge(rate: calculate_rate(sailing), rate_currency: "EUR")
+          sailing.merge(rate: calculate_rate(sailing))
         end
       end
       .compact
-      .min_by { |entry| entry[:rate] }
+      .min_by { |entry| entry[:rate] }[:sailing_code]
+
+    [sailing_code]
   end
 
   def calculate_rate(sailing)
+    # we wouldn't need that if the exchange_rates contained an entry for eur
     return sailing[:rate].to_f.round(2) if sailing[:rate_currency] == "EUR"
 
     exchange_rate = MapReduceService.new.exchange_rates[sailing[:departure_date].to_sym][sailing[:rate_currency].downcase.to_sym]

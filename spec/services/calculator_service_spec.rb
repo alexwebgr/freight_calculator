@@ -22,15 +22,17 @@ describe CalculatorService do
         cheapest-direct"
       }
       let(:expected_output) {
-        {
-          arrival_date: "2022-03-05",
-          departure_date: "2022-01-30",
-          destination_port: "NLRTM",
-          origin_port: "CNSHA",
-          sailing_code: "MNOP",
-          rate: 508.76,
-          rate_currency: "EUR"
-        }
+        [
+          {
+            arrival_date: "2022-03-05",
+            departure_date: "2022-01-30",
+            destination_port: "NLRTM",
+            origin_port: "CNSHA",
+            sailing_code: "MNOP",
+            rate: "456.78",
+            rate_currency: "USD"
+          }
+        ]
       }
 
       it "returns the expected output" do
