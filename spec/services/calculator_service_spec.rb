@@ -28,12 +28,47 @@ describe CalculatorService do
             departure_date: "2022-01-30",
             destination_port: "NLRTM",
             origin_port: "CNSHA",
+            sailing_code: "MNOA",
+            rate: "456.78",
+            rate_currency: "EUR"
+          }
+        ]
+      }
+
+      before do
+        map_reduce = instance_double('MapReduceService')
+        allow(MapReduceService).to receive(:new).and_return(map_reduce)
+        allow(map_reduce).to receive(:exchange_rates).and_return(MapReduceService::PAYLOAD[:exchange_rates])
+        allow(map_reduce).to receive(:aggregated_sailings).and_return([
+          {
+            arrival_date: "2022-03-05",
+            departure_date: "2022-01-30",
+            destination_port: "NLRTM",
+            origin_port: "CNSHA",
+            sailing_code: "MNOD",
+            rate: "556.78",
+            rate_currency: "USD"
+          },
+          {
+            arrival_date: "2022-03-05",
+            departure_date: "2022-01-30",
+            destination_port: "NLRTM",
+            origin_port: "CNSHA",
+            sailing_code: "MNOA",
+            rate: "456.78",
+            rate_currency: "EUR"
+          },
+          {
+            arrival_date: "2022-03-05",
+            departure_date: "2022-01-30",
+            destination_port: "NLRTM",
+            origin_port: "CNSHA",
             sailing_code: "MNOP",
             rate: "456.78",
             rate_currency: "USD"
           }
-        ]
-      }
+        ])
+      end
 
       it "returns the expected output" do
         expect(subject).to eq expected_output

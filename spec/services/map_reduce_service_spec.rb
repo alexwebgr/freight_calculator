@@ -9,6 +9,12 @@ describe MapReduceService do
     end
   end
 
+  describe "#exchange_rates" do
+    it "returns the data as is" do
+      expect(subject.exchange_rates).to eq(described_class::PAYLOAD[:exchange_rates])
+    end
+  end
+
   describe "#aggregated_sailings" do
     it "returns the sailings along with the rates" do
       # only check the first entry for structural correctness
