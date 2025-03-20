@@ -18,7 +18,8 @@ class CalculatorService
   def call
     @origin_port, @destination_port, criteria = InputParserService.call(input_string).values
     criteria_methods = {
-      "cheapest-direct" => "cheapest_direct"
+      "cheapest-direct" => "cheapest_direct",
+      "cheapest" => "cheapest",
     }
 
     return [] if criteria_methods[criteria].nil?
@@ -35,6 +36,33 @@ class CalculatorService
     aggregated_sailings.select do |sailing|
       codes.include?(sailing[:sailing_code])
     end
+  end
+
+  def cheapest
+    [
+      cheapest_direct,
+      cheapest_indirect
+    ].flatten
+  end
+
+  def cheapest_indirect
+    sailings_by_origin = aggregated_sailings.group_by { |sailing| sailing[:origin_port] }
+    sailings_by_departure = aggregated_sailings.group_by { |sailing| sailing[:destination_port] }
+
+    first_legs = sailings_by_origin[origin_port] || []
+    second_legs = sailings_by_departure[destination_port] || []
+
+    first_legs.flat_map do |first_leg|
+      second_legs.map do |second_leg|
+        if first_leg[:destination_port] == second_leg[:origin_port] && Date.parse(first_leg[:arrival_date]) <= Date.parse(second_leg[:departure_date])
+          {
+            sailing_codes: [first_leg[:sailing_code], second_leg[:sailing_code]],
+            total_cost: calculate_rate(first_leg) + calculate_rate(second_leg)
+          }
+        end
+      end.compact
+    end
+      .min_by { |entry| entry[:total_cost] }[:sailing_codes]
   end
 
   def cheapest_direct

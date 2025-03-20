@@ -29,6 +29,7 @@ RSpec.configure do |config|
     # ...rather than:
     #     # => "be bigger than 2"
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
+    expectations.max_formatted_output_length = nil
   end
 
   # rspec-mocks config goes here. You can use an alternate test double
@@ -98,4 +99,5 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+  Dir[File.join(__dir__, "support", "**", "*.rb")].each { |file| require file }
 end
