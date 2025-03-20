@@ -78,9 +78,8 @@ class CalculatorService
     [sailing_code]
   end
 
-  def calculate_rate(sailing)
-    # we wouldn't need that if the exchange_rates contained an entry for eur
-    return sailing[:rate].to_f.round(2) if sailing[:rate_currency] == "EUR"
+  def calculate_rate(sailing, conversion_currency = "EUR")
+    return sailing[:rate].to_f.round(2) if sailing[:rate_currency] == conversion_currency
 
     exchange_rate = MapReduceService.new.exchange_rates[sailing[:departure_date].to_sym][sailing[:rate_currency].downcase.to_sym]
     (exchange_rate * sailing[:rate].to_f).round(2)
