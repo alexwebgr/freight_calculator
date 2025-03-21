@@ -17,6 +17,8 @@ class CalculatorService
     criteria_methods = {
       "cheapest-direct" => "CheapestCalculatorService",
       "cheapest" => "CheapestCalculatorService",
+      "fastest-direct" => "FastestCalculatorService",
+      "fastest" => "FastestCalculatorService"
     }
 
     return [] if criteria_methods[criteria].nil?

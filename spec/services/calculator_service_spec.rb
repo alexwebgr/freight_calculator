@@ -41,5 +41,31 @@ describe CalculatorService do
         subject
       end
     end
+
+    context "when the criteria is fastest-direct" do
+      let(:input_string) {
+        "CNSHA
+        NLRTM
+        fastest-direct"
+      }
+
+      it "calls the FastestCalculatorService" do
+        expect(FastestCalculatorService).to receive(:call)
+        subject
+      end
+    end
+
+    context "when the criteria is fastest" do
+      let(:input_string) {
+        "CNSHA
+        NLRTM
+        fastest"
+      }
+
+      it "calls the FastestCalculatorService" do
+        expect(FastestCalculatorService).to receive(:call)
+        subject
+      end
+    end
   end
 end
