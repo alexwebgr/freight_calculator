@@ -39,13 +39,19 @@ class CalculatorService
   end
 
   def cheapest
-    [
-      cheapest_direct,
-      cheapest_indirect
-    ].flatten
+    cheapest_direct = cheapest_direct_route
+    cheapest_indirect = cheapest_indirect_route
+
+    if cheapest_indirect[:total_cost] == cheapest_direct[:rate]
+      [cheapest_indirect[:sailing_codes], cheapest_direct[:sailing_code]].flatten
+    elsif cheapest_indirect[:total_cost] > cheapest_direct[:rate]
+      cheapest_direct[:sailing_code]
+    else
+      cheapest_indirect[:sailing_codes]
+    end
   end
 
-  def cheapest_indirect
+  def cheapest_indirect_route
     sailings_by_origin = aggregated_sailings.group_by { |sailing| sailing[:origin_port] }
     sailings_by_departure = aggregated_sailings.group_by { |sailing| sailing[:destination_port] }
 
@@ -62,20 +68,22 @@ class CalculatorService
         end
       end.compact
     end
-      .min_by { |entry| entry[:total_cost] }[:sailing_codes]
+      .min_by { |entry| entry[:total_cost] }
   end
 
   def cheapest_direct
-    sailing_code = aggregated_sailings
+    [cheapest_direct_route[:sailing_code]]
+  end
+
+  def cheapest_direct_route
+    aggregated_sailings
       .map do |sailing|
         if sailing[:origin_port] == origin_port && sailing[:destination_port] == destination_port
           sailing.merge(rate: calculate_rate(sailing))
         end
       end
       .compact
-      .min_by { |entry| entry[:rate] }[:sailing_code]
-
-    [sailing_code]
+      .min_by { |entry| entry[:rate] }
   end
 
   def calculate_rate(sailing, conversion_currency = "EUR")

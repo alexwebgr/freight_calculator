@@ -1,10 +1,19 @@
 [
   {
     "origin_port": "CNSHA",
+    "destination_port": "NLRTM",
+    "departure_date": "2022-01-30",
+    "arrival_date": "2022-03-05",
+    "rate": "446.78",
+    "rate_currency": "EUR",
+    "sailing_code": "MNOP"
+  },
+  {
+    "origin_port": "CNSHA",
     "destination_port": "ESBCN",
     "departure_date": "2022-01-29",
     "arrival_date": "2022-02-12",
-    "rate": "261.96",
+    "rate": "350",
     "rate_currency": "EUR",
     "sailing_code": "ERXQ"
   },
@@ -13,8 +22,8 @@
     "destination_port": "NLRTM",
     "departure_date": "2022-02-16",
     "arrival_date": "2022-02-20",
-    "rate": "69.96",
-    "rate_currency": "USD",
+    "rate": "106.78",
+    "rate_currency": "EUR",
     "sailing_code": "ETRG"
   }
 ]
