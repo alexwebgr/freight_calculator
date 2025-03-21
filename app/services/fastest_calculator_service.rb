@@ -1,4 +1,4 @@
-require "date"
+require "time"
 require_relative "../finder"
 
 class FastestCalculatorService
