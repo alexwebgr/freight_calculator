@@ -16,5 +16,14 @@ jobs:
       - name: Build Docker image
         run: docker build -t freight_calculator .
 
-      - name: Run Docker container
+      - name: Run cheapest
+        run: docker run -e INPUT="$(cat cheapest.txt)" freight_calculator
+
+      - name: Run cheapest-direct
+        run: docker run -e INPUT="$(cat cheapest_direct.txt)" freight_calculator
+
+      - name: Run fastest
+        run: docker run -e INPUT="$(cat fastest.txt)" freight_calculator
+
+      - name: Run fastest-direct
         run: docker run -e INPUT="$(cat fastest_direct.txt)" freight_calculator
