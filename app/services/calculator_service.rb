@@ -1,5 +1,6 @@
 require_relative "input_parser_service"
 require_relative "cheapest_calculator_service"
+require_relative "fastest_calculator_service"
 
 class CalculatorService
   attr_reader :input_string
