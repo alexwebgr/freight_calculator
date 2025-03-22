@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class InputParserService
   attr_reader :input_string
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative "../spec_helper"
 require_relative "../../app/services/cheapest_calculator_service"
 

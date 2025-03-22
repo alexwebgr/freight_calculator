@@ -1,0 +1,33 @@
+AllCops:
+  NewCops: disable
+  SuggestExtensions: false
+
+Style/StringLiterals:
+  Enabled: false
+
+Style/BlockDelimiters:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+Style/AccessorGrouping:
+  Enabled: false
+
+Metrics/ModuleLength:
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 20
+
+Style/MultilineBlockChain:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Lint/SymbolConversion:
+  Enabled: true
+
+Style/BlockComments:
+  Enabled: false
