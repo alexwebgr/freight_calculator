@@ -28,5 +28,12 @@ describe MapReduceService do
         "rate_currency": "USD"
       })
     end
+
+    context "when a rate doesn't exist for a sailing" do
+      it "returns the expected output" do
+        stub_const("MapReduceService::PAYLOAD", file_fixture("sailings_1.json"))
+        expect(subject.aggregated_sailings).to eq([])
+      end
+    end
   end
 end

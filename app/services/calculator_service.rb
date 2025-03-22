@@ -15,15 +15,15 @@ class CalculatorService
 
   def call
     criteria = InputParserService.call(input_string)[:criteria]
-    criteria_methods = {
+    class_map = {
       "cheapest-direct" => "CheapestCalculatorService",
       "cheapest" => "CheapestCalculatorService",
       "fastest-direct" => "FastestCalculatorService",
       "fastest" => "FastestCalculatorService"
     }
 
-    return [] if criteria_methods[criteria].nil?
+    return [] if class_map[criteria].nil?
 
-    Object.const_get(criteria_methods[criteria]).call(input_string)
+    Object.const_get(class_map[criteria]).call(input_string)
   end
 end

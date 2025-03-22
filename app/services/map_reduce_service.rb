@@ -154,14 +154,11 @@ class MapReduceService
 
   def aggregated_sailings
     rates = PAYLOAD[:rates].each_with_object({}) do |rate, memo|
-      memo[rate[:sailing_code]] = {
-        rate: rate[:rate],
-        rate_currency: rate[:rate_currency],
-      }
+      memo[rate[:sailing_code]] = rate
     end
 
     PAYLOAD[:sailings].map do |sailing|
-      {}.merge(sailing, rates[sailing[:sailing_code]])
-    end
+      {}.merge(sailing, rates[sailing[:sailing_code]]) if rates[sailing[:sailing_code]]
+    end.compact
   end
 end

@@ -1,0 +1,18 @@
+{
+  "sailings": [
+    {
+      "origin_port": "CNSHA",
+      "destination_port": "NLRTM",
+      "departure_date": "2022-02-01",
+      "arrival_date": "2022-03-01",
+      "sailing_code": "ABCD"
+    }
+  ],
+  "rates": [
+    {
+      "sailing_code": "XXX",
+      "rate": "589.30",
+      "rate_currency": "USD"
+    }
+  ]
+}
