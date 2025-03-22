@@ -3,6 +3,8 @@
     "coverage": {
       "/home/runner/work/freight_calculator/freight_calculator/app/finder.rb": {
         "lines": [
+          null,
+          null,
           1,
           1,
           null,
@@ -35,14 +37,16 @@
           null
         ],
         "branches": {
-          "[:if, 0, 13, 4, 13, 48]": {
-            "[:then, 1, 13, 4, 13, 13]": 2,
-            "[:else, 2, 13, 4, 13, 48]": 8
+          "[:if, 0, 15, 4, 15, 48]": {
+            "[:then, 1, 15, 4, 15, 13]": 2,
+            "[:else, 2, 15, 4, 15, 48]": 8
           }
         }
       },
       "/home/runner/work/freight_calculator/freight_calculator/app/services/map_reduce_service.rb": {
         "lines": [
+          null,
+          null,
           1,
           null,
           1,
@@ -64,14 +68,16 @@
           null
         ],
         "branches": {
-          "[:if, 0, 16, 6, 16, 87]": {
-            "[:then, 1, 16, 6, 16, 54]": 19,
-            "[:else, 2, 16, 6, 16, 87]": 1
+          "[:if, 0, 18, 6, 18, 87]": {
+            "[:then, 1, 18, 6, 18, 54]": 19,
+            "[:else, 2, 18, 6, 18, 87]": 1
           }
         }
       },
       "/home/runner/work/freight_calculator/freight_calculator/app/payload.rb": {
         "lines": [
+          null,
+          null,
           1,
           null,
           1,
@@ -227,6 +233,8 @@
       },
       "/home/runner/work/freight_calculator/freight_calculator/app/services/input_parser_service.rb": {
         "lines": [
+          null,
+          null,
           1,
           1,
           null,
@@ -260,18 +268,20 @@
           null
         ],
         "branches": {
-          "[:if, 0, 19, 4, 19, 34]": {
-            "[:then, 1, 19, 4, 19, 13]": 1,
-            "[:else, 2, 19, 4, 19, 34]": 18
+          "[:if, 0, 21, 4, 21, 34]": {
+            "[:then, 1, 21, 4, 21, 13]": 1,
+            "[:else, 2, 21, 4, 21, 34]": 18
           },
-          "[:if, 3, 23, 4, 23, 75]": {
-            "[:then, 4, 23, 4, 23, 13]": 5,
-            "[:else, 5, 23, 4, 23, 75]": 13
+          "[:if, 3, 25, 4, 25, 75]": {
+            "[:then, 4, 25, 4, 25, 13]": 5,
+            "[:else, 5, 25, 4, 25, 75]": 13
           }
         }
       },
       "/home/runner/work/freight_calculator/freight_calculator/spec/services/calculator_service_spec.rb": {
         "lines": [
+          null,
+          null,
           1,
           1,
           1,
@@ -348,6 +358,8 @@
       },
       "/home/runner/work/freight_calculator/freight_calculator/app/services/calculator_service.rb": {
         "lines": [
+          null,
+          null,
           1,
           1,
           1,
@@ -365,8 +377,8 @@
           null,
           1,
           5,
-          null,
           5,
+          null,
           null,
           null,
           null,
@@ -379,14 +391,16 @@
           null
         ],
         "branches": {
-          "[:if, 0, 25, 4, 25, 41]": {
-            "[:then, 1, 25, 4, 25, 13]": 1,
-            "[:else, 2, 25, 4, 25, 41]": 4
+          "[:if, 0, 27, 4, 27, 41]": {
+            "[:then, 1, 27, 4, 27, 13]": 1,
+            "[:else, 2, 27, 4, 27, 41]": 4
           }
         }
       },
       "/home/runner/work/freight_calculator/freight_calculator/app/services/cheapest_calculator_service.rb": {
         "lines": [
+          null,
+          null,
           1,
           1,
           1,
@@ -404,8 +418,8 @@
           null,
           null,
           1,
-          null,
           9,
+          null,
           null,
           null,
           null,
@@ -469,30 +483,32 @@
           null
         ],
         "branches": {
-          "[:if, 0, 34, 4, 40, 7]": {
-            "[:then, 1, 35, 6, 35, 81]": 1,
-            "[:else, 2, 36, 4, 40, 7]": 2
+          "[:if, 0, 36, 4, 42, 7]": {
+            "[:then, 1, 37, 6, 37, 81]": 1,
+            "[:else, 2, 38, 4, 42, 7]": 2
           },
-          "[:if, 3, 36, 4, 40, 7]": {
-            "[:then, 4, 37, 6, 37, 36]": 1,
-            "[:else, 5, 39, 6, 39, 39]": 1
+          "[:if, 3, 38, 4, 42, 7]": {
+            "[:then, 4, 39, 6, 39, 36]": 1,
+            "[:else, 5, 41, 6, 41, 39]": 1
           },
-          "[:if, 6, 46, 10, 48, 13]": {
-            "[:then, 7, 47, 12, 47, 56]": 10,
-            "[:else, 8, 46, 10, 48, 13]": 8
+          "[:if, 6, 48, 10, 50, 13]": {
+            "[:then, 7, 49, 12, 49, 56]": 10,
+            "[:else, 8, 48, 10, 50, 13]": 8
           },
-          "[:if, 9, 63, 8, 69, 11]": {
-            "[:then, 10, 65, 10, 68, 11]": 4,
-            "[:else, 11, 63, 8, 69, 11]": 46
+          "[:if, 9, 65, 8, 71, 11]": {
+            "[:then, 10, 67, 10, 70, 11]": 4,
+            "[:else, 11, 65, 8, 71, 11]": 46
           },
-          "[:if, 12, 75, 4, 75, 89]": {
-            "[:then, 13, 75, 4, 75, 39]": 11,
-            "[:else, 14, 75, 4, 75, 89]": 7
+          "[:if, 12, 77, 4, 77, 89]": {
+            "[:then, 13, 77, 4, 77, 39]": 11,
+            "[:else, 14, 77, 4, 77, 89]": 7
           }
         }
       },
       "/home/runner/work/freight_calculator/freight_calculator/app/services/fastest_calculator_service.rb": {
         "lines": [
+          null,
+          null,
           1,
           1,
           null,
@@ -508,8 +524,8 @@
           null,
           null,
           1,
-          null,
           9,
+          null,
           null,
           null,
           null,
@@ -570,26 +586,28 @@
           null
         ],
         "branches": {
-          "[:if, 0, 32, 4, 38, 7]": {
-            "[:then, 1, 33, 6, 33, 79]": 1,
-            "[:else, 2, 34, 4, 38, 7]": 2
+          "[:if, 0, 34, 4, 40, 7]": {
+            "[:then, 1, 35, 6, 35, 79]": 1,
+            "[:else, 2, 36, 4, 40, 7]": 2
           },
-          "[:if, 3, 34, 4, 38, 7]": {
-            "[:then, 4, 35, 6, 35, 35]": 1,
-            "[:else, 5, 37, 6, 37, 38]": 1
+          "[:if, 3, 36, 4, 40, 7]": {
+            "[:then, 4, 37, 6, 37, 35]": 1,
+            "[:else, 5, 39, 6, 39, 38]": 1
           },
-          "[:if, 6, 44, 8, 46, 11]": {
-            "[:then, 7, 45, 10, 45, 68]": 20,
-            "[:else, 8, 44, 8, 46, 11]": 16
+          "[:if, 6, 46, 8, 48, 11]": {
+            "[:then, 7, 47, 10, 47, 68]": 20,
+            "[:else, 8, 46, 8, 48, 11]": 16
           },
-          "[:if, 9, 61, 8, 67, 11]": {
-            "[:then, 10, 63, 10, 66, 11]": 6,
-            "[:else, 11, 61, 8, 67, 11]": 120
+          "[:if, 9, 63, 8, 69, 11]": {
+            "[:then, 10, 65, 10, 68, 11]": 6,
+            "[:else, 11, 63, 8, 69, 11]": 120
           }
         }
       },
       "/home/runner/work/freight_calculator/freight_calculator/spec/services/cheapest_calculator_service_spec.rb": {
         "lines": [
+          null,
+          null,
           1,
           1,
           null,
@@ -615,8 +633,8 @@
           null,
           1,
           null,
-          null,
           1,
+          null,
           null,
           null,
           null,
@@ -691,6 +709,8 @@
       },
       "/home/runner/work/freight_calculator/freight_calculator/spec/services/fastest_calculator_service_spec.rb": {
         "lines": [
+          null,
+          null,
           1,
           1,
           null,
@@ -784,6 +804,8 @@
       },
       "/home/runner/work/freight_calculator/freight_calculator/spec/services/input_parser_service_spec.rb": {
         "lines": [
+          null,
+          null,
           1,
           1,
           null,
@@ -816,8 +838,8 @@
           null,
           null,
           1,
-          null,
           1,
+          null,
           null,
           null,
           null,
@@ -834,6 +856,8 @@
       },
       "/home/runner/work/freight_calculator/freight_calculator/spec/services/map_reduce_service_spec.rb": {
         "lines": [
+          null,
+          null,
           1,
           1,
           null,
@@ -876,6 +900,6 @@
         "branches": {}
       }
     },
-    "timestamp": 1742655315
+    "timestamp": 1742657178
   }
 }
