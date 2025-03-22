@@ -3,22 +3,11 @@ require_relative "../../app/services/map_reduce_service"
 
 describe MapReduceService do
   subject { MapReduceService.new }
-  describe "#raw" do
-    it "returns the data as is" do
-      expect(subject.raw).to eq(described_class::PAYLOAD)
-    end
-  end
-
-  describe "#exchange_rates" do
-    it "returns the data as is" do
-      expect(subject.exchange_rates).to eq(described_class::PAYLOAD[:exchange_rates])
-    end
-  end
 
   describe "#aggregated_sailings" do
     it "returns the sailings along with the rates" do
       # only check the first entry for structural correctness
-      expect(subject.aggregated_sailings[0]).to eq({
+      expect(subject.call[0]).to eq({
         "origin_port": "CNSHA",
         "destination_port": "NLRTM",
         "departure_date": "2022-02-01",
@@ -32,7 +21,17 @@ describe MapReduceService do
     context "when a rate doesn't exist for a sailing" do
       it "returns the expected output" do
         stub_const("MapReduceService::PAYLOAD", file_fixture("sailings_1.json"))
-        expect(subject.aggregated_sailings).to eq([])
+        expect(subject.call).to eq([
+          {
+            "arrival_date": "2022-03-05",
+            "departure_date": "2022-01-30",
+            "destination_port": "NLRTM",
+            "origin_port": "CNSHA",
+            "rate": "589.30",
+            "rate_currency": "USD",
+            "sailing_code": "MNOA"
+          }
+        ])
       end
     end
   end

@@ -36,10 +36,7 @@ describe CheapestCalculatorService do
       }
 
       before do
-        map_reduce = instance_double('MapReduceService')
-        allow(MapReduceService).to receive(:new).and_return(map_reduce)
-        allow(map_reduce).to receive(:exchange_rates).and_return(MapReduceService::PAYLOAD[:exchange_rates])
-        allow(map_reduce).to receive(:aggregated_sailings).and_return(file_fixture("aggregated_sailings_1.json"))
+        allow(MapReduceService).to receive(:call).and_return(file_fixture("aggregated_sailings_1.json"))
       end
 
       it "returns the expected output" do
@@ -70,9 +67,7 @@ describe CheapestCalculatorService do
         let(:expected_output) { file_fixture("cheapest_output_2.json") }
 
         before do
-          map_reduce = instance_double('MapReduceService')
-          allow(MapReduceService).to receive(:new).and_return(map_reduce)
-          allow(map_reduce).to receive(:aggregated_sailings).and_return(file_fixture("aggregated_sailings_2.json"))
+          allow(MapReduceService).to receive(:call).and_return(file_fixture("aggregated_sailings_2.json"))
         end
 
         it "returns the expected output" do
@@ -89,9 +84,7 @@ describe CheapestCalculatorService do
         let(:expected_output) { file_fixture("cheapest_output_3.json") }
 
         before do
-          map_reduce = instance_double('MapReduceService')
-          allow(MapReduceService).to receive(:new).and_return(map_reduce)
-          allow(map_reduce).to receive(:aggregated_sailings).and_return(file_fixture("aggregated_sailings_3.json"))
+          allow(MapReduceService).to receive(:call).and_return(file_fixture("aggregated_sailings_3.json"))
         end
 
         it "returns the expected output" do

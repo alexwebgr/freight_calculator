@@ -1,8 +1,10 @@
 require "date"
 require_relative "../finder"
+require_relative "../payload"
 
 class CheapestCalculatorService
   include Finder
+  include Payload
 
   def self.call(input_string)
     new(input_string).call
@@ -42,7 +44,7 @@ class CheapestCalculatorService
     aggregated_sailings
       .map do |sailing|
           if sailing[:origin_port] == origin_port && sailing[:destination_port] == destination_port
-          sailing.merge(rate: calculate_rate(sailing))
+            sailing.merge(rate: calculate_rate(sailing))
           end
         end
       .compact
@@ -72,7 +74,7 @@ class CheapestCalculatorService
   def calculate_rate(sailing, conversion_currency = "EUR")
     return sailing[:rate].to_f.round(2) if sailing[:rate_currency] == conversion_currency
 
-    exchange_rate = MapReduceService.new.exchange_rates[sailing[:departure_date].to_sym][sailing[:rate_currency].downcase.to_sym]
+    exchange_rate = exchange_rates[sailing[:departure_date].to_sym][sailing[:rate_currency].downcase.to_sym]
     (exchange_rate * sailing[:rate].to_f).round(2)
   end
 end

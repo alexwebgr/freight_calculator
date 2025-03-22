@@ -24,9 +24,7 @@ describe FastestCalculatorService do
       let(:expected_output) { file_fixture("fastest_output_1.json") }
 
       before do
-        map_reduce = instance_double('MapReduceService')
-        allow(MapReduceService).to receive(:new).and_return(map_reduce)
-        allow(map_reduce).to receive(:aggregated_sailings).and_return(file_fixture("fastest_input_1.json"))
+        allow(MapReduceService).to receive(:call).and_return(file_fixture("fastest_input_1.json"))
       end
 
       it "returns the expected output" do
@@ -44,9 +42,7 @@ describe FastestCalculatorService do
         let(:expected_output) { file_fixture("fastest_output_2.json") }
 
         before do
-          map_reduce = instance_double('MapReduceService')
-          allow(MapReduceService).to receive(:new).and_return(map_reduce)
-          allow(map_reduce).to receive(:aggregated_sailings).and_return(file_fixture("fastest_input_2.json"))
+          allow(MapReduceService).to receive(:call).and_return(file_fixture("fastest_input_2.json"))
         end
 
         it "returns the expected output" do
@@ -63,9 +59,7 @@ describe FastestCalculatorService do
         let(:expected_output) { file_fixture("fastest_output_3.json") }
 
         before do
-          map_reduce = instance_double('MapReduceService')
-          allow(MapReduceService).to receive(:new).and_return(map_reduce)
-          allow(map_reduce).to receive(:aggregated_sailings).and_return(file_fixture("fastest_input_3.json"))
+          allow(MapReduceService).to receive(:call).and_return(file_fixture("fastest_input_3.json"))
         end
 
         it "returns the expected output" do
@@ -82,9 +76,7 @@ describe FastestCalculatorService do
         let(:expected_output) { file_fixture("fastest_output_4.json") }
 
         before do
-          map_reduce = instance_double('MapReduceService')
-          allow(MapReduceService).to receive(:new).and_return(map_reduce)
-          allow(map_reduce).to receive(:aggregated_sailings).and_return(file_fixture("fastest_input_4.json"))
+          allow(MapReduceService).to receive(:call).and_return(file_fixture("fastest_input_4.json"))
         end
 
         it "returns the expected output" do

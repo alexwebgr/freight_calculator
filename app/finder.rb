@@ -12,7 +12,7 @@ module Finder
 
     return [] if criteria_methods[criteria].nil?
 
-    @aggregated_sailings = MapReduceService.new.aggregated_sailings
+    @aggregated_sailings = MapReduceService.call
 
     sailing_codes = send criteria_methods[criteria]
     find_sailings(sailing_codes)
