@@ -10,7 +10,7 @@ describe CheapestCalculatorService do
       let(:input_string) { "" }
       let(:expected_output) { [] }
 
-      it "returns an empty hash" do
+      it "returns an empty array" do
         expect(subject).to eq expected_output
       end
     end

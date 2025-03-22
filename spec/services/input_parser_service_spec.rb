@@ -15,6 +15,14 @@ describe InputParserService do
       end
     end
 
+    context "when input_string is nil" do
+      let(:expected_output) { {} }
+
+      it "returns an empty hash" do
+        expect(subject).to eq expected_output
+      end
+    end
+
     context "when input_string is valid" do
       let(:input_string) {
         "CNSHA

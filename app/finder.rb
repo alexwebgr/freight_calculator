@@ -25,6 +25,6 @@ module Finder
   end
 
   def criteria_methods
-    raise RuntimeError, "Class must implement criteria_methods"
+    raise NotImplementedError, "Class must implement criteria_methods"
   end
 end
