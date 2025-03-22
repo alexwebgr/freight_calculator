@@ -41,10 +41,10 @@ class FastestCalculatorService
   def fastest_direct_route
     aggregated_sailings
       .map do |sailing|
-      if sailing[:origin_port] == origin_port && sailing[:destination_port] == destination_port
-        sailing.merge(total_duration: calculate_duration(sailing))
-      end
-    end
+        if sailing[:origin_port] == origin_port && sailing[:destination_port] == destination_port
+          sailing.merge(total_duration: calculate_duration(sailing))
+          end
+        end
       .compact
       .min_by { |entry| entry[:total_duration] }
   end

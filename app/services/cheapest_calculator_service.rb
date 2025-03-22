@@ -41,10 +41,10 @@ class CheapestCalculatorService
   def cheapest_direct_route
     aggregated_sailings
       .map do |sailing|
-      if sailing[:origin_port] == origin_port && sailing[:destination_port] == destination_port
-        sailing.merge(rate: calculate_rate(sailing))
-      end
-    end
+          if sailing[:origin_port] == origin_port && sailing[:destination_port] == destination_port
+          sailing.merge(rate: calculate_rate(sailing))
+          end
+        end
       .compact
       .min_by { |entry| entry[:rate] }
   end
