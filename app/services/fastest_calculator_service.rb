@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 require "time"
-require_relative "../finder"
+require_relative "../searchable"
 
 class FastestCalculatorService
-  include Finder
+  include Searchable
 
   def self.call(input_string)
     new(input_string).call
@@ -47,7 +47,7 @@ class FastestCalculatorService
       end
     end
       .compact
-      .min_by { |entry| entry[:total_duration] }
+      .min_by { |entry| entry[:total_duration] } || {}
   end
 
   def fastest_indirect_route
@@ -60,7 +60,7 @@ class FastestCalculatorService
           total_duration: calculate_duration(first_leg) + calculate_duration(second_leg)
         }
       end.compact
-    end.min_by { |entry| entry[:total_duration] }
+    end.min_by { |entry| entry[:total_duration] } || {}
   end
 
   def calculate_duration(sailing)

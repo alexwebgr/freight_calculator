@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 require "date"
-require_relative "../finder"
+require_relative "../searchable"
 require_relative "../payload"
 
 class CheapestCalculatorService
-  include Finder
+  include Searchable
   include Payload
 
   def self.call(input_string)
@@ -49,7 +49,7 @@ class CheapestCalculatorService
       end
     end
       .compact
-      .min_by { |entry| entry[:rate] }
+      .min_by { |entry| entry[:rate] } || {}
   end
 
   def cheapest_indirect_route
@@ -62,7 +62,7 @@ class CheapestCalculatorService
           total_cost: calculate_rate(first_leg) + calculate_rate(second_leg)
         }
       end.compact
-    end.min_by { |entry| entry[:total_cost] }
+    end.min_by { |entry| entry[:total_cost] } || {}
   end
 
   def calculate_rate(sailing, conversion_currency = "EUR")

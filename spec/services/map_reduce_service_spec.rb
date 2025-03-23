@@ -21,7 +21,7 @@ describe MapReduceService do
     end
 
     context "when a rate doesn't exist for a sailing" do
-      it "returns the expected output" do
+      it "returns only the ones with rates" do
         stub_const("MapReduceService::PAYLOAD", file_fixture("sailings_1.json"))
         expect(subject.call).to eq([
                                      {

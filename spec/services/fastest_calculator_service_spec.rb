@@ -29,8 +29,34 @@ describe FastestCalculatorService do
         allow(MapReduceService).to receive(:call).and_return(file_fixture("fastest_input_1.json"))
       end
 
-      it "returns the expected output" do
+      it "returns the fastest direct" do
         expect(subject).to eq expected_output
+      end
+
+      context "and the origin does not exist" do
+        let(:input_string) {
+          "ELSHA
+          NLRTM
+          fastest-direct"
+        }
+        let(:expected_output) { [] }
+
+        it "returns an empty array" do
+          expect(subject).to eq expected_output
+        end
+      end
+
+      context "and the destination does not exist" do
+        let(:input_string) {
+          "CHSHA
+          RTM
+          fastest-direct"
+        }
+        let(:expected_output) { [] }
+
+        it "returns an empty array" do
+          expect(subject).to eq expected_output
+        end
       end
     end
 
@@ -47,7 +73,7 @@ describe FastestCalculatorService do
           allow(MapReduceService).to receive(:call).and_return(file_fixture("fastest_input_2.json"))
         end
 
-        it "returns the expected output" do
+        it "returns the two fastest legs" do
           expect(subject).to eq expected_output
         end
       end
@@ -64,7 +90,7 @@ describe FastestCalculatorService do
           allow(MapReduceService).to receive(:call).and_return(file_fixture("fastest_input_3.json"))
         end
 
-        it "returns the expected output" do
+        it "returns the fastest direct" do
           expect(subject).to eq expected_output
         end
       end
@@ -81,9 +107,48 @@ describe FastestCalculatorService do
           allow(MapReduceService).to receive(:call).and_return(file_fixture("fastest_input_4.json"))
         end
 
-        it "returns the expected output" do
+        it "returns both two fastest legs and the fastest direct" do
           expect(subject).to eq expected_output
         end
+      end
+
+      context "and the origin does not exist" do
+        let(:input_string) {
+          "ELSHA
+          NLRTM
+          fastest"
+        }
+        let(:expected_output) { [] }
+
+        it "returns an empty array" do
+          expect(subject).to eq expected_output
+        end
+      end
+
+      context "and the destination does not exist" do
+        let(:input_string) {
+          "CHSHA
+          RTM
+          fastest"
+        }
+        let(:expected_output) { [] }
+
+        it "returns an empty array" do
+          expect(subject).to eq expected_output
+        end
+      end
+    end
+
+    context "and the criteria does not exist" do
+      let(:input_string) {
+        "ELSHA
+          NLRTM
+          nogo"
+      }
+      let(:expected_output) { [] }
+
+      it "returns an empty array" do
+        expect(subject).to eq expected_output
       end
     end
   end

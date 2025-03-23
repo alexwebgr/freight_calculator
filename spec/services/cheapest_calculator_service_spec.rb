@@ -41,8 +41,34 @@ describe CheapestCalculatorService do
         allow(MapReduceService).to receive(:call).and_return(file_fixture("aggregated_sailings_1.json"))
       end
 
-      it "returns the expected output" do
+      it "returns only the cheapest direct" do
         expect(subject).to eq expected_output
+      end
+
+      context "and the origin does not exist" do
+        let(:input_string) {
+          "ELSHA
+          NLRTM
+          cheapest-direct"
+        }
+        let(:expected_output) { [] }
+
+        it "returns an empty array" do
+          expect(subject).to eq expected_output
+        end
+      end
+
+      context "and the destination does not exist" do
+        let(:input_string) {
+          "CHSHA
+          RTM
+          cheapest-direct"
+        }
+        let(:expected_output) { [] }
+
+        it "returns an empty array" do
+          expect(subject).to eq expected_output
+        end
       end
     end
 
@@ -55,7 +81,7 @@ describe CheapestCalculatorService do
         }
         let(:expected_output) { file_fixture("cheapest_output_1.json") }
 
-        it "returns the expected output" do
+        it "returns the two cheapest legs" do
           expect(subject).to eq expected_output
         end
       end
@@ -72,7 +98,7 @@ describe CheapestCalculatorService do
           allow(MapReduceService).to receive(:call).and_return(file_fixture("aggregated_sailings_2.json"))
         end
 
-        it "returns the expected output" do
+        it "returns the cheapest direct" do
           expect(subject).to eq expected_output
         end
       end
@@ -89,9 +115,48 @@ describe CheapestCalculatorService do
           allow(MapReduceService).to receive(:call).and_return(file_fixture("aggregated_sailings_3.json"))
         end
 
-        it "returns the expected output" do
+        it "returns both the two cheapest legs and the cheapest direct" do
           expect(subject).to eq expected_output
         end
+      end
+
+      context "and the origin does not exist" do
+        let(:input_string) {
+          "ELSHA
+          NLRTM
+          cheapest"
+        }
+        let(:expected_output) { [] }
+
+        it "returns an empty array" do
+          expect(subject).to eq expected_output
+        end
+      end
+
+      context "and the destination does not exist" do
+        let(:input_string) {
+          "CHSHA
+          RTM
+          cheapest"
+        }
+        let(:expected_output) { [] }
+
+        it "returns an empty array" do
+          expect(subject).to eq expected_output
+        end
+      end
+    end
+
+    context "and the criteria does not exist" do
+      let(:input_string) {
+        "ELSHA
+          NLRTM
+          nogo"
+      }
+      let(:expected_output) { [] }
+
+      it "returns an empty array" do
+        expect(subject).to eq expected_output
       end
     end
   end

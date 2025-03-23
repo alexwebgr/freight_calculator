@@ -3,7 +3,7 @@
 require_relative "services/map_reduce_service"
 require_relative "services/input_parser_service"
 
-module Finder
+module Searchable
   attr_reader :input_string
   attr_reader :aggregated_sailings
   attr_reader :origin_port
@@ -28,13 +28,11 @@ module Finder
 
   def first_legs
     sailings_by_origin = aggregated_sailings.group_by { |sailing| sailing[:origin_port] }
-
     sailings_by_origin[origin_port] || []
   end
 
   def second_legs
     sailings_by_departure = aggregated_sailings.group_by { |sailing| sailing[:destination_port] }
-
     sailings_by_departure[destination_port] || []
   end
 
