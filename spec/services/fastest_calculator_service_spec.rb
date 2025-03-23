@@ -23,10 +23,10 @@ describe FastestCalculatorService do
         NLRTM
         fastest-direct"
       }
-      let(:expected_output) { file_fixture("fastest_output_1.json") }
+      let(:expected_output) { file_fixture("fastest_direct__output.json") }
 
       before do
-        allow(MapReduceService).to receive(:call).and_return(file_fixture("fastest_input_1.json"))
+        allow(MapReduceService).to receive(:call).and_return(file_fixture("fastest_direct__input.json"))
       end
 
       it "returns the fastest direct" do
@@ -67,10 +67,10 @@ describe FastestCalculatorService do
           NLRTM
           fastest"
         }
-        let(:expected_output) { file_fixture("fastest_output_2.json") }
+        let(:expected_output) { file_fixture("fastest__indirect_fastest_output.json") }
 
         before do
-          allow(MapReduceService).to receive(:call).and_return(file_fixture("fastest_input_2.json"))
+          allow(MapReduceService).to receive(:call).and_return(file_fixture("fastest__indirect_fastest_input.json"))
         end
 
         it "returns the two fastest legs" do
@@ -84,10 +84,10 @@ describe FastestCalculatorService do
           NLRTM
           fastest"
         }
-        let(:expected_output) { file_fixture("fastest_output_3.json") }
+        let(:expected_output) { file_fixture("fastest__direct_fastest_output.json") }
 
         before do
-          allow(MapReduceService).to receive(:call).and_return(file_fixture("fastest_input_3.json"))
+          allow(MapReduceService).to receive(:call).and_return(file_fixture("fastest__direct_fastest_input.json"))
         end
 
         it "returns the fastest direct" do
@@ -101,10 +101,10 @@ describe FastestCalculatorService do
           NLRTM
           fastest"
         }
-        let(:expected_output) { file_fixture("fastest_output_4.json") }
+        let(:expected_output) { file_fixture("fastest__equal_output.json") }
 
         before do
-          allow(MapReduceService).to receive(:call).and_return(file_fixture("fastest_input_4.json"))
+          allow(MapReduceService).to receive(:call).and_return(file_fixture("fastest__equal_input.json"))
         end
 
         it "returns both two fastest legs and the fastest direct" do

@@ -20,7 +20,7 @@ jobs:
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
 
       - name: Run tests
-        run: bundle exec rspec
+        run: bundle exec rspec --order defined --format doc
 
       - name: Deploy to GitHub Pages
         if: success()

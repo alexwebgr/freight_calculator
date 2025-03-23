@@ -23,22 +23,10 @@ describe CheapestCalculatorService do
         NLRTM
         cheapest-direct"
       }
-      let(:expected_output) {
-        [
-          {
-            arrival_date: "2022-03-05",
-            departure_date: "2022-01-30",
-            destination_port: "NLRTM",
-            origin_port: "CNSHA",
-            sailing_code: "MNOA",
-            rate: "456.78",
-            rate_currency: "EUR"
-          }
-        ]
-      }
+      let(:expected_output) { file_fixture("cheapest_direct__output.json") }
 
       before do
-        allow(MapReduceService).to receive(:call).and_return(file_fixture("aggregated_sailings_1.json"))
+        allow(MapReduceService).to receive(:call).and_return(file_fixture("cheapest_direct__input.json"))
       end
 
       it "returns only the cheapest direct" do
@@ -79,7 +67,11 @@ describe CheapestCalculatorService do
           NLRTM
           cheapest"
         }
-        let(:expected_output) { file_fixture("cheapest_output_1.json") }
+        let(:expected_output) { file_fixture("cheapest__indirect_cheapest_output.json") }
+
+        before do
+          allow(MapReduceService).to receive(:call).and_return(file_fixture("cheapest__indirect_cheapest_input.json"))
+        end
 
         it "returns the two cheapest legs" do
           expect(subject).to eq expected_output
@@ -92,10 +84,10 @@ describe CheapestCalculatorService do
           NLRTM
           cheapest"
         }
-        let(:expected_output) { file_fixture("cheapest_output_2.json") }
+        let(:expected_output) { file_fixture("cheapest__direct_cheapest_output.json") }
 
         before do
-          allow(MapReduceService).to receive(:call).and_return(file_fixture("aggregated_sailings_2.json"))
+          allow(MapReduceService).to receive(:call).and_return(file_fixture("cheapest__direct_cheapest_input.json"))
         end
 
         it "returns the cheapest direct" do
@@ -109,10 +101,10 @@ describe CheapestCalculatorService do
           NLRTM
           cheapest"
         }
-        let(:expected_output) { file_fixture("cheapest_output_3.json") }
+        let(:expected_output) { file_fixture("cheapest__equal_output.json") }
 
         before do
-          allow(MapReduceService).to receive(:call).and_return(file_fixture("aggregated_sailings_3.json"))
+          allow(MapReduceService).to receive(:call).and_return(file_fixture("cheapest__equal_input.json"))
         end
 
         it "returns both the two cheapest legs and the cheapest direct" do

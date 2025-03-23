@@ -22,7 +22,7 @@ describe MapReduceService do
 
     context "when a rate doesn't exist for a sailing" do
       it "returns only the ones with rates" do
-        stub_const("MapReduceService::PAYLOAD", file_fixture("sailings_1.json"))
+        stub_const("MapReduceService::PAYLOAD", file_fixture("missing_rate.json"))
         expect(subject.call).to eq([
                                      {
                                        arrival_date: "2022-03-05",
