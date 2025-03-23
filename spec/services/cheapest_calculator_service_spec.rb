@@ -18,19 +18,21 @@ describe CheapestCalculatorService do
     end
 
     context "when the criteria is cheapest-direct" do
-      let(:input_string) {
-        "CNSHA
-        NLRTM
-        cheapest-direct"
-      }
-      let(:expected_output) { file_fixture("cheapest_direct__output.json") }
+      context "and the params are valid" do
+        let(:input_string) {
+          "CNSHA
+          NLRTM
+          cheapest-direct"
+        }
+        let(:expected_output) { file_fixture("cheapest_direct__output.json") }
 
-      before do
-        allow(MapReduceService).to receive(:call).and_return(file_fixture("cheapest_direct__input.json"))
-      end
+        before do
+          allow(MapReduceService).to receive(:call).and_return(file_fixture("cheapest_direct__input.json"))
+        end
 
-      it "returns only the cheapest direct" do
-        expect(subject).to eq expected_output
+        it "returns only the cheapest direct" do
+          expect(subject).to eq expected_output
+        end
       end
 
       context "and the origin does not exist" do
@@ -48,13 +50,41 @@ describe CheapestCalculatorService do
 
       context "and the destination does not exist" do
         let(:input_string) {
-          "CHSHA
+          "CNSHA
           RTM
           cheapest-direct"
         }
         let(:expected_output) { [] }
 
         it "returns an empty array" do
+          expect(subject).to eq expected_output
+        end
+      end
+
+      context "and the criteria does not exist" do
+        let(:input_string) {
+          "CNSHA
+          NLRTM
+          nogo"
+        }
+        let(:expected_output) { [] }
+
+        it "returns an empty array" do
+          expect(subject).to eq expected_output
+        end
+      end
+
+      context "and the exchange rate is not available" do
+        let(:input_string) {
+          "CNSHA
+          NLRTM
+          cheapest-direct"
+        }
+        let(:expected_output) { file_fixture("cheapest_direct__missing_exchange_rate_output.json") }
+
+        it "returns only the ones with exchange rate" do
+          stub_const("Payload::PAYLOAD", file_fixture("cheapest_direct__missing_exchange_rate_input.json"))
+
           expect(subject).to eq expected_output
         end
       end
@@ -127,7 +157,7 @@ describe CheapestCalculatorService do
 
       context "and the destination does not exist" do
         let(:input_string) {
-          "CHSHA
+          "CNSHA
           RTM
           cheapest"
         }
@@ -137,18 +167,33 @@ describe CheapestCalculatorService do
           expect(subject).to eq expected_output
         end
       end
-    end
 
-    context "and the criteria does not exist" do
-      let(:input_string) {
-        "ELSHA
+      context "and the exchange rate is not available" do
+        let(:input_string) {
+          "CNSHA
+          NLRTM
+          cheapest"
+        }
+        let(:expected_output) { file_fixture("cheapest__missing_exchange_rate_output.json") }
+
+        it "returns only the ones with exchange rate" do
+          stub_const("Payload::PAYLOAD", file_fixture("cheapest__missing_exchange_rate_input.json"))
+
+          expect(subject).to eq expected_output
+        end
+      end
+
+      context "and the criteria does not exist" do
+        let(:input_string) {
+          "CNSHA
           NLRTM
           nogo"
-      }
-      let(:expected_output) { [] }
+        }
+        let(:expected_output) { [] }
 
-      it "returns an empty array" do
-        expect(subject).to eq expected_output
+        it "returns an empty array" do
+          expect(subject).to eq expected_output
+        end
       end
     end
   end

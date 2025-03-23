@@ -1,0 +1,40 @@
+{
+  "sailings": [
+    {
+      "origin_port": "CNSHA",
+      "destination_port": "NLRTM",
+      "departure_date": "2022-02-01",
+      "arrival_date": "2022-03-01",
+      "sailing_code": "ABCD"
+    },
+    {
+      "origin_port": "CNSHA",
+      "destination_port": "NLRTM",
+      "departure_date": "2022-01-30",
+      "arrival_date": "2022-03-05",
+      "sailing_code": "MNOA"
+    }
+  ],
+  "rates": [
+    {
+      "sailing_code": "ABCD",
+      "rate": "589.30",
+      "rate_currency": "USD"
+    },
+    {
+      "sailing_code": "MNOA",
+      "rate": "589.30",
+      "rate_currency": "USD"
+    }
+  ],
+  "exchange_rates": {
+    "2022-01-30": {
+      "usd": 1.1482,
+      "jpy": 149.93
+    },
+    "2022-02-16": {
+      "usd": 1.1482,
+      "jpy": 149.93
+    }
+  }
+}

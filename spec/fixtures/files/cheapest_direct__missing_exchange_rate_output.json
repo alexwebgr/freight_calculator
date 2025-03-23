@@ -1,0 +1,11 @@
+[
+  {
+    "arrival_date": "2022-03-05",
+    "departure_date": "2022-01-30",
+    "destination_port": "NLRTM",
+    "origin_port": "CNSHA",
+    "sailing_code": "MNOA",
+    "rate": "589.30",
+    "rate_currency": "USD"
+  }
+]

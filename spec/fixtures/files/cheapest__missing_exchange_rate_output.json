@@ -1,0 +1,20 @@
+[
+  {
+    "origin_port": "CNSHA",
+    "destination_port": "ESBCN",
+    "departure_date": "2022-02-29",
+    "arrival_date": "2022-03-12",
+    "sailing_code": "ERXX",
+    "rate": "300.30",
+    "rate_currency": "USD"
+  },
+  {
+    "origin_port": "ESBCN",
+    "destination_port": "NLRTM",
+    "departure_date": "2022-03-15",
+    "arrival_date": "2022-04-29",
+    "sailing_code": "ETRX",
+    "rate": "300.30",
+    "rate_currency": "USD"
+  }
+]

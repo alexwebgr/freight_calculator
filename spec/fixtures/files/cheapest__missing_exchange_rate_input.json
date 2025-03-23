@@ -1,0 +1,76 @@
+{
+  "sailings": [
+    {
+      "origin_port": "CNSHA",
+      "destination_port": "NLRTM",
+      "departure_date": "2022-01-29",
+      "arrival_date": "2022-03-15",
+      "sailing_code": "QRST"
+    },
+    {
+      "origin_port": "CNSHA",
+      "destination_port": "ESBCN",
+      "departure_date": "2022-01-29",
+      "arrival_date": "2022-02-12",
+      "sailing_code": "ERXQ"
+    },
+    {
+      "origin_port": "ESBCN",
+      "destination_port": "NLRTM",
+      "departure_date": "2022-02-15",
+      "arrival_date": "2022-03-29",
+      "sailing_code": "ETRF"
+    },
+    {
+      "origin_port": "CNSHA",
+      "destination_port": "ESBCN",
+      "departure_date": "2022-02-29",
+      "arrival_date": "2022-03-12",
+      "sailing_code": "ERXX"
+    },
+    {
+      "origin_port": "ESBCN",
+      "destination_port": "NLRTM",
+      "departure_date": "2022-03-15",
+      "arrival_date": "2022-04-29",
+      "sailing_code": "ETRX"
+    }
+  ],
+  "rates": [
+    {
+      "sailing_code": "QRST",
+      "rate": "689.30",
+      "rate_currency": "USD"
+    },
+    {
+      "sailing_code": "ERXQ",
+      "rate": "400.30",
+      "rate_currency": "USD"
+    },
+    {
+      "sailing_code": "ETRF",
+      "rate": "400.30",
+      "rate_currency": "USD"
+    },
+    {
+      "sailing_code": "ERXX",
+      "rate": "300.30",
+      "rate_currency": "USD"
+    },
+    {
+      "sailing_code": "ETRX",
+      "rate": "300.30",
+      "rate_currency": "USD"
+    }
+  ],
+  "exchange_rates": {
+    "2022-02-29": {
+      "usd": 1.1482,
+      "jpy": 149.93
+    },
+    "2022-03-15": {
+      "usd": 1.1482,
+      "jpy": 149.93
+    }
+  }
+}

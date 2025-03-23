@@ -48,9 +48,22 @@ describe FastestCalculatorService do
 
       context "and the destination does not exist" do
         let(:input_string) {
-          "CHSHA
+          "CNSHA
           RTM
           fastest-direct"
+        }
+        let(:expected_output) { [] }
+
+        it "returns an empty array" do
+          expect(subject).to eq expected_output
+        end
+      end
+
+      context "and the criteria does not exist" do
+        let(:input_string) {
+          "CNSHA
+          NLRTM
+          nogo"
         }
         let(:expected_output) { [] }
 
@@ -127,7 +140,7 @@ describe FastestCalculatorService do
 
       context "and the destination does not exist" do
         let(:input_string) {
-          "CHSHA
+          "CNSHA
           RTM
           fastest"
         }
@@ -137,18 +150,18 @@ describe FastestCalculatorService do
           expect(subject).to eq expected_output
         end
       end
-    end
 
-    context "and the criteria does not exist" do
-      let(:input_string) {
-        "ELSHA
+      context "and the criteria does not exist" do
+        let(:input_string) {
+          "CNSHA
           NLRTM
           nogo"
-      }
-      let(:expected_output) { [] }
+        }
+        let(:expected_output) { [] }
 
-      it "returns an empty array" do
-        expect(subject).to eq expected_output
+        it "returns an empty array" do
+          expect(subject).to eq expected_output
+        end
       end
     end
   end
