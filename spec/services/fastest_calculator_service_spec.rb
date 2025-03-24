@@ -71,6 +71,23 @@ describe FastestCalculatorService do
           expect(subject).to eq expected_output
         end
       end
+
+      context "and there are only direct" do
+        let(:input_string) {
+          "CNSHA
+          NLRTM
+          fastest-direct"
+        }
+        let(:expected_output) { file_fixture("fastest_direct__single_output.json") }
+
+        before do
+          allow(MapReduceService).to receive(:call).and_return(file_fixture("fastest_direct__single_input.json"))
+        end
+
+        it "returns only the ones with exchange rate" do
+          expect(subject).to eq expected_output
+        end
+      end
     end
 
     context "when the criteria is fastest" do
@@ -160,6 +177,23 @@ describe FastestCalculatorService do
         let(:expected_output) { [] }
 
         it "returns an empty array" do
+          expect(subject).to eq expected_output
+        end
+      end
+
+      context "and there are only indirect" do
+        let(:input_string) {
+          "CNSHA
+          NLRTM
+          fastest"
+        }
+        let(:expected_output) { file_fixture("fastest__single_output.json") }
+
+        before do
+          allow(MapReduceService).to receive(:call).and_return(file_fixture("fastest__single_input.json"))
+        end
+
+        it "returns only the ones with exchange rate" do
           expect(subject).to eq expected_output
         end
       end
