@@ -1,18 +1,11 @@
 # frozen_string_literal: true
 
 require "time"
+require_relative "calculator_service"
 require_relative "../searchable"
 
-class FastestCalculatorService
+class FastestCalculatorService < CalculatorService
   include Searchable
-
-  def self.call(input_string)
-    new(input_string).call
-  end
-
-  def initialize(input_string)
-    @input_string = input_string
-  end
 
   def criteria_methods
     {

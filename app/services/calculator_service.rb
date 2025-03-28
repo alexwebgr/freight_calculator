@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
 require_relative "input_parser_service"
-require_relative "cheapest_calculator_service"
-require_relative "fastest_calculator_service"
+require_relative "map_reduce_service"
 
 class CalculatorService
   attr_reader :input_string
+  attr_reader :aggregated_sailings
+  attr_reader :origin_port
+  attr_reader :destination_port
 
   def self.call(input_string)
     new(input_string).call
@@ -16,16 +18,17 @@ class CalculatorService
   end
 
   def call
-    criteria = InputParserService.call(input_string)[:criteria]
-    class_map = {
-      "cheapest-direct" => "CheapestCalculatorService",
-      "cheapest" => "CheapestCalculatorService",
-      "fastest-direct" => "FastestCalculatorService",
-      "fastest" => "FastestCalculatorService"
-    }
+    @origin_port, @destination_port, criteria = InputParserService.call(input_string).values
 
-    return [] if class_map[criteria].nil?
+    return [] if criteria_methods[criteria].nil?
 
-    Object.const_get(class_map[criteria]).call(input_string)
+    @aggregated_sailings = MapReduceService.call
+
+    sailing_codes = send criteria_methods[criteria]
+    find_sailings(sailing_codes)
+  end
+
+  def criteria_methods
+    raise NotImplementedError, "Class must implement criteria_methods"
   end
 end

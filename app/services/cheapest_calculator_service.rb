@@ -1,22 +1,15 @@
 # frozen_string_literal: true
 
 require "date"
+require_relative "calculator_service"
 require_relative "../searchable"
 require_relative "../payload"
 
-class CheapestCalculatorService
+class CheapestCalculatorService < CalculatorService
   CONVERSION_CURRENCY = "EUR"
 
   include Searchable
   include Payload
-
-  def self.call(input_string)
-    new(input_string).call
-  end
-
-  def initialize(input_string)
-    @input_string = input_string
-  end
 
   def criteria_methods
     {
