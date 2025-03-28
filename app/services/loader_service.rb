@@ -18,14 +18,14 @@ class LoaderService
   def call
     criteria = InputParserService.call(input_string)[:criteria]
     class_map = {
-      "cheapest-direct" => "CheapestCalculatorService",
-      "cheapest" => "CheapestCalculatorService",
-      "fastest-direct" => "FastestCalculatorService",
-      "fastest" => "FastestCalculatorService"
+      "cheapest-direct" => CheapestCalculatorService,
+      "cheapest" => CheapestCalculatorService,
+      "fastest-direct" => FastestCalculatorService,
+      "fastest" => FastestCalculatorService
     }
 
     return [] if class_map[criteria].nil?
 
-    Object.const_get(class_map[criteria]).call(input_string)
+    class_map[criteria].call(input_string)
   end
 end
